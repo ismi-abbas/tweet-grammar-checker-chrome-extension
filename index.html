@@ -12,7 +12,7 @@
     />
     <title>Tweet Grammar Checker</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script src="script.js" defer unsafe-inline></script>
   </head>
   <body>
     <div class="container">
@@ -24,7 +24,7 @@
             type="checkbox"
             id="change-tweet"
             name="change-tweet"
-            value="change-tweet"
+            value="change"
           />
           <label for="vehicle3">Change tweet original words</label>
         </div>
@@ -52,11 +52,12 @@
       </div>
 
       <div>
-        <button id="check-btn" onclick="fetchGPT()">Check Grammar</button>
+        <button id="check-btn">Check Grammar</button>
+        <button id="check-btn-2">Get Tweet</button>
       </div>
 
       <div class="gpt-result" style="margin-top: 5px">
-        <p id="result">Sample Answer</p>
+        <p id="result"></p>
       </div>
     </div>
   </body>

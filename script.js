@@ -1,10 +1,27 @@
 const api_key = document.getElementById('api_key').value
 const tweet = document.getElementById('tweet').value
-const change_original = document.getElementById('change-tweet').value
+const change_original = document.getElementById('change-tweet').checked
+const placeholderElement = document.querySelector(
+  '.public-DraftEditorPlaceholder-inner',
+)
+const tweetInput = document.querySelector(
+  '.public-DraftEditorPlaceholder-inner',
+)
+const result = document.getElementById('result')
+
+const check_button = document
+  .getElementById('check-btn')
+  .addEventListener('click', $event => {
+    fecthGPT($event.target.value)
+  })
+
+const check_button_2 = document
+  .getElementById('check-btn-2')
+  .addEventListener('click', getTweet)
 
 const fecthGPT = async tweet => {
-  if (change_original) {
-    tweet + 'Do not change the original tweet words'
+  if (!change_original) {
+    var retain_tweet = tweet + 'Do not change the original tweet words'
   }
 
   const response = await fetch(
@@ -15,7 +32,7 @@ const fecthGPT = async tweet => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: change_original ? change_original : tweet,
+        prompt: change_original ? tweet : retain_tweet,
         max_tokens: 100,
         temperature: 0.9,
         top_p: 1,
@@ -26,18 +43,30 @@ const fecthGPT = async tweet => {
     },
   )
   const data = await response.json()
-  document.getElementById('result').innerHTML = data.choices[0].text
+  result.innerHTML = data.choices[0].text
 }
 
 const extractTweetContent = () => {
-  // Find the tweet input field or textarea
-  const tweetInput = document.querySelector('[data-testid="tweetTextarea_0"]')
-
   if (tweetInput) {
-    // Extract the tweet content
-    const tweetContent = tweetInput.value
+    const tweetContent = tweetInput.innerHTML
 
-    // Send the tweet content to the background script
     chrome.runtime.sendMessage({ tweetContent })
   }
 }
+
+document.addEventListener('input', extractTweetContent)
+
+document.addEventListener('compositionend', extractTweetContent)
+
+function getTweet() {
+  console.log(tweetInput)
+  alert()
+}
+
+console.log('something', {
+  api_key,
+  tweet,
+  change_original,
+  placeholderElement,
+  tweetInput,
+})
