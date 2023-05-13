@@ -26,5 +26,18 @@ const fecthGPT = async tweet => {
     },
   )
   const data = await response.json()
-  return data.choices[0].text
+  document.getElementById('result').innerHTML = data.choices[0].text
+}
+
+const extractTweetContent = () => {
+  // Find the tweet input field or textarea
+  const tweetInput = document.querySelector('[data-testid="tweetTextarea_0"]')
+
+  if (tweetInput) {
+    // Extract the tweet content
+    const tweetContent = tweetInput.value
+
+    // Send the tweet content to the background script
+    chrome.runtime.sendMessage({ tweetContent })
+  }
 }

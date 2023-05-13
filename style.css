@@ -15,12 +15,28 @@ body {
   padding: 15px;
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
 .input-box {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   gap: 5px;
+}
+
+.api-box {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 2px;
+  font-size: 14px;
 }
 
 .tweet-space {
@@ -34,6 +50,11 @@ body {
   padding: 10px;
   font-size: 14px;
   resize: none;
+  font-family: Inter, sans-serif;
+}
+
+.gpt-result p {
+  font-size: 14px;
   font-family: Inter, sans-serif;
 }
 

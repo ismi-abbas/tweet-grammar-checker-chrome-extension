@@ -18,14 +18,26 @@
     <div class="container">
       <h1>Tweet Grammar Checker</h1>
 
-      <div class="input-box">
-        <input
-          type="checkbox"
-          id="change-tweet"
-          name="change-tweet"
-          value="change-tweet"
-        />
-        <label for="vehicle3">Change tweet original words</label>
+      <div class="input-group">
+        <div class="input-box">
+          <input
+            type="checkbox"
+            id="change-tweet"
+            name="change-tweet"
+            value="change-tweet"
+          />
+          <label for="vehicle3">Change tweet original words</label>
+        </div>
+
+        <div>
+          <label for="api_key">Open AI Key</label>
+          <input
+            type="text"
+            placeholder="Enter your Open AI Key"
+            id="api_key"
+            class="api-box"
+          />
+        </div>
       </div>
 
       <div class="tweet-space">
@@ -41,6 +53,10 @@
 
       <div>
         <button id="check-btn" onclick="fetchGPT()">Check Grammar</button>
+      </div>
+
+      <div class="gpt-result" style="margin-top: 5px">
+        <p id="result">Sample Answer</p>
       </div>
     </div>
   </body>
