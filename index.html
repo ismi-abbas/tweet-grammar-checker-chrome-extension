@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tweet Grammar Checker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tweet Grammar Checker</h1>
+
+      <div class="input-box">
+        <input
+          type="checkbox"
+          id="change-tweet"
+          name="change-tweet"
+          value="change-tweet"
+        />
+        <label for="vehicle3">Change tweet original words</label>
+      </div>
+
+      <div class="tweet-space">
+        <textarea
+          name="tweet"
+          id="tweet"
+          cols="50"
+          rows="10"
+          maxlength="240"
+          placeholder="Enter your tweet here"
+        ></textarea>
+      </div>
+
+      <div>
+        <button id="check-btn" onclick="fetchGPT()">Check Grammar</button>
+      </div>
+    </div>
+  </body>
+</html>
